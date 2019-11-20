@@ -10,7 +10,7 @@ myApp.posts = (() => {
         response.map(Element => {
           const html = `<div style="background-color: whitesmoke;" class="mt-1">
           <h5> Title: </h5>  ${Element.title}
-            <h4> Body: </h4>
+            <h6> Body: </h6>
             ${Element.body}
           </div>
       `;
