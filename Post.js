@@ -1,34 +1,31 @@
 myApp.namespace("posts");
 
-myApp.posts = (function() {
-  function getAllPosts() {
+myApp.posts = (() => {
+  const getAllPosts = () => {
     const settings = {
       contentType: "application/json",
       type: "Get",
 
-      success: function(respose) {
-        for (let i = 0; i < respose.length; i++) {
-          console.log(`Title: ${respose[i].title} Body: ${respose[i].body}`);
+      success: response => {
+        response.map(Element => {
           const html = `<div style="background-color: whitesmoke;" class="mt-1">
-            <h5>${respose[i].title}</h5>
-            <p>
-            ${respose[i].body}
-            </p>
+          <h5> Title: </h5>  ${Element.title}
+            <h6> Body: </h6>
+            ${Element.body}
           </div>
       `;
           $("#main-container").append(html);
-        }
-        console.log(respose);
+        });
       },
-      error: function(err) {
-        console.log(err);
+      error: err => {
+        $.alert(err);
       }
     };
     $.ajax("https://jsonplaceholder.typicode.com/posts", settings);
-  }
-  function readyMain() {
+  };
+  const readyMain = () => {
     getAllPosts();
-  }
+  };
   return {
     readyMain
   };

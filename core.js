@@ -1,6 +1,3 @@
 var myApp = {};
 
-myApp.namespace = function(subSpace) {
-  myApp[subSpace] = {};
-  console.log(myApp);
-};
+myApp.namespace = subSpace => (myApp[subSpace] = {});
