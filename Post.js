@@ -23,11 +23,11 @@ myApp.posts = (() => {
     };
     $.ajax("https://jsonplaceholder.typicode.com/posts", settings);
   };
-  
+
   const readyMain = () => {
     getAllPosts();
   };
   return {
-    readyMain: readyMain
+    readyMain
   };
 })();
