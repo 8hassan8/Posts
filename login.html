@@ -1,30 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <style rel="stylessheet" href="style.css"></style>
+
     <title>Login</title>
   </head>
-  <body></body>
-</html>
-<header>
-  <h1>Login</h1>
-</header>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <span class="navbar-brand m-auto h-125 h1">Login</span>
+    </nav>
 
-<section class="container">
-  <form id="my-form">
-    <h1>Login User</h1>
-    <div class="msg"></div>
-    <div>
-      <label for="name">Name:</label>
-      <input type="text" id="name" />
-    </div>
-    <div>
-      <label for="email">Email:</label>
-      <input type="text" id="email" />
-    </div>
-    <input class="btn" type="submit" value="Submit" />
-  </form>
-</section>
+    <section class="container">
+      <form id="my-form">
+        <h1>Login User</h1>
+        <div class="msg"></div>
+        <div>
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="username"
+            hassan="myHassan"
+            class="uName"
+          />
+        </div>
+        <input class="btn login-btn" type="button" value="Submit" />
+      </form>
+    </section>
+    <script src="core.js"></script>
+    <script src="login.js"></script>
+    <div id="main-container" class="container"></div>
+    <script>
+      $(document).ready(() => {
+        myApp.Validation.readyMain();
+      });
+    </script>
+  </body>
+</html>
