@@ -19,13 +19,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
     <title>Assignment</title>
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
       <span class="navbar-brand m-auto h-125 h1">Posts</span>
     </nav>
-    <div id="main-container" class="container"></div>
+    <div
+      id="main-container"
+      class="container"
+      type="text/x-handlebars-template"
+    ></div>
+    <script id="adress-template" type="text/x-handlebars-template">
+
+      <p>
+          <h5>Title: </h5> {{title}}:
+      <br/> <h5>Body: </h5> {{body}}:
+      </p>
+      {{#each comments}}
+        <h6>Comments</h6>
+        <p>{{email}}</p>
+      {{/each}}
+    </script>
     <script>
       $(document).ready(function() {
         myApp.posts.readyMain();

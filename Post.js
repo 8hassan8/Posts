@@ -7,35 +7,24 @@ myApp.posts = (() => {
       type: "Get",
 
       success: response => {
-        response.map(async Post => {
-          let commentsHtml = "";
-          await getCommentsByPostId(Post.id)
+        response.map(Post => {
+          getCommentsByPostId(Post.id)
             .then(comments => {
-              comments.map(com => {
-                commentsHtml += `<h5>Email: ${com.email}  </h5> <p>Body: ${com.body}  </p>`;
-              });
+              Post["comments"] = comments;
+              console.log(response);
+              let theTemplateScript = $("#adress-template").html();
+              let theTemplate = Handlebars.compile(theTemplateScript);
+              let theCompiledHtml = theTemplate(Post);
+              $(".container").append(theCompiledHtml);
             })
             .catch(error => {});
-
-          console.log(commentsHtml);
-          const html = `<div style="background-color: whitesmoke;" class="mt-1">
-          <h5> Title: </h5>  ${Post.title}
-            <h6> Body: </h6> ${Post.body}
-            </div>
-            <div>
-            <h2> Comments: </h2>
-            <div class=mr-50>
-            ${commentsHtml}
-            </div>
-          </div>
-      `;
-          $("#main-container").append(html);
         });
       },
       error: err => {
         $.alert(err);
       }
     };
+
     $.ajax("https://jsonplaceholder.typicode.com/posts", settings);
   };
   const getCommentsByPostId = postId => {
